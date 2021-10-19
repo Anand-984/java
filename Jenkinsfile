@@ -24,11 +24,11 @@ pipeline {
 	steps{
 	sshagent(credentials: [''], ignoreMissing: true) {
 	sh """
-	scp -o StrictHostChecking=no target/myweb.war hari@54.243.3.148:/home/hari/apache-tomcat-9.0.54/webapps/
+	scp -o StrictHostChecking=no target/myweb.war hari@172.31.7.55:/opt/apache-tomcat-9.0.54/webapps/
 	
-	ssh hari@54.243.3.148:/home/hari/apache-tomcat-9.0.54/bin/shutdown.sh
+	ssh hari@172.31.7.55:/opt/apache-tomcat-9.0.54/bin/shutdown.sh
 	
-	ssh hari@54.243.3.148:/home/hari/apache-tomcat-9.0.54/bin/startup.sh
+	ssh hari@172.31.7.55:/opt/apache-tomcat-9.0.54/bin/startup.sh
 	
 	"""
 	}
