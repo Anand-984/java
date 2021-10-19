@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment{
-	PATH = "/opt/maven3.8.3/bin:$PATH"
+	PATH = "/opt/maven3.8.3/bin/:$PATH"
 	}
 
     stages{
@@ -15,7 +15,7 @@ pipeline {
 
     stage("Maven Build"){
 	steps{
-	sh "mvn clean package"
+	sh "mvn package"
 	sh "mvn target/*.war target/myweb.war"
 	}
 	}
