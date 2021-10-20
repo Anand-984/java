@@ -22,13 +22,13 @@ pipeline {
     
     stage("depoy-dev"){
 	steps{
-	sshagent(['tomcat-new']){
+	sshagent(['tomcat-now']){
 	sh """
-	scp -o StrictHostChecking=no target/myweb.war hari@172.31.7.55:/opt/apache-tomcat-9.0.54/webapps/
+	scp -o StrictHostChecking=no target/myweb.war ec2-use@172.31.7.55:/opt/apache-tomcat-9.0.54/webapps/
 	
-	ssh hari@172.31.7.55:/opt/apache-tomcat-9.0.54/bin/shutdown.sh
+	ssh ec2-user@172.31.7.55:/opt/apache-tomcat-9.0.54/bin/shutdown.sh
 	
-	ssh hari@172.31.7.55:/opt/apache-tomcat-9.0.54/bin/startup.sh
+	ssh ec2-user@172.31.7.55:/opt/apache-tomcat-9.0.54/bin/startup.sh
 	
 	"""
 	}
