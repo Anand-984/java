@@ -24,7 +24,7 @@ pipeline {
 	steps{
 	
 	sh """
-	sudo scp -i "webserver.pem" -o StrictHostKeyChecking=no target/myweb.war ec2-user@54.162.15.220:/opt/apache-tomcat-9.0.54/webapps/
+	sudo scp -i "webserver.pem" -o StrictHostKeyChecking=no target/*.war ec2-user@54.162.15.220:/opt/apache-tomcat-9.0.54/webapps/
 	
 	ssh ec2-user@54.162.15.220:/opt/apache-tomcat-9.0.54/bin/shutdown.sh
 	
