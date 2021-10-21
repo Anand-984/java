@@ -23,13 +23,14 @@ pipeline {
     stage("depoy-dev"){
 	steps{
 	
-	
-	sh "/scp -i "webserver.pem" myweb.war ec2-user@54.162.15.220:/opt/apache-tomcat-9.0.54/webapps/
+	sh """
+	scp -i "webserver.pem" myweb.war ec2-user@54.162.15.220:/opt/apache-tomcat-9.0.54/webapps/
 	
 	ssh ec2-user@54.162.15.220:/opt/apache-tomcat-9.0.54/bin/shutdown.sh
 	
 	ssh ec2-user@54.162.15.220:/opt/apache-tomcat-9.0.54/bin/startup.sh
 	
+	"""
 	
 	}
 	}
