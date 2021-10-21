@@ -24,7 +24,7 @@ pipeline {
 	steps{
 	
 	sh """
-	scp -i "webserver.pem" myweb.war ec2-user@54.162.15.220:/opt/apache-tomcat-9.0.54/webapps/
+	scp -i "webserver.pem" -o StrictHostKeyChecking=no myweb.war ec2-user@54.162.15.220:/opt/apache-tomcat-9.0.54/webapps/
 	
 	ssh ec2-user@54.162.15.220:/opt/apache-tomcat-9.0.54/bin/shutdown.sh
 	
