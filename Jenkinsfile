@@ -22,7 +22,7 @@ pipeline {
     
     stage("depoy-dev"){
 	steps{
-	sshagent(['tomcat-now']){
+	
 	sh """
 	scp -i "webserver.pem" target/myweb.war ec2-user@54.162.15.220:/opt/apache-tomcat-9.0.54/webapps/
 	
@@ -33,7 +33,7 @@ pipeline {
 	"""
 	}
 	}
-    }
+    
     }
     }
     
